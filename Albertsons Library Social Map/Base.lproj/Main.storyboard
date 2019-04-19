@@ -39,7 +39,7 @@
         <!--View Controller-->
         <scene sceneID="x5r-SH-ziz">
             <objects>
-                <viewController id="msx-rD-hyD" sceneMemberID="viewController">
+                <viewController id="msx-rD-hyD" customClass="ViewController" customModule="Albertsons_Library_Social_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zfg-ei-VRm">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,6 +61,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Va4-Q9-fFo"/>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="vmu-EC-Vn2" id="szE-pg-w7r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqp-jk-4QZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

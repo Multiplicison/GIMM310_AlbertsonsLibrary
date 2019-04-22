@@ -20,11 +20,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     //************************
     //enumerator to be used for switch statements down in func viewWillDisappear()
     enum ImageType : String {
-        case appleLab = "appleLabDoorMarker2"
-        case winLab = "winLapMarker"
-        case exitLab = "exitMarker1"
+        case appleLab1 = "appleLabDoorMarker2"
+        case winLab1 = "winLapMarker"
+        case winLab2 = "bigDaddyMarker"
+        case winLab3 = "marioMarker"
+        case winLab4 = "winLabWallFullMarker"
+        case exitLab1 = "exitMarker1"
         case exitLab2 = "extMarker"
-        case lobDesk = "lobDeskMarker1"
+        case lobDesk1 = "lobDeskMarker1"
+        case lobDesk2 = "lobDeskCornerMarker"
+        case lobDesk3 = "libDeskPcMarker"
+        case lobDesk4 = "deskPanelLGMarker"
+        case lobDesk5 = "deskPanelSmMarker"
+        case lobDesk6 = "bsuFlagMarker"
+        case lobDesk7 = "skateRackMarker"
+        case lobPC1 = "pcScreenMarker"
+        case lobPC2 = "pcMarker1"
+        case lobPC3 = "pcMarker2"
+        case lobPC4 = "pcMarker3"
     }
     //************************
     
@@ -38,7 +51,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.autoenablesDefaultLighting = true
         
         //**********************
-        //set up reference paths for our 3D obejects
+        //SET UP REF PATH AND VARS FOR THE 3D OBJECTS
         let boxScene = SCNScene(named: "art.scnassets/Box.scn")
         let sphereScene = SCNScene(named: "art.scnassets/Sphere.scn")
         let capsuleScene = SCNScene(named: "art.scnassets/Capsule.scn")
@@ -46,14 +59,66 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let torusScene = SCNScene(named: "art.scnassets/Torus.scn")
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
+        boxNode!.name = "box"
         sphereNode = sphereScene?.rootNode
+        sphereNode!.name = "sphere"
         capsuleNode = capsuleScene?.rootNode
+        capsuleNode!.name = "capsule"
         pyramidNode = pyramidScene?.rootNode
+        pyramidNode!.name = "pyramid"
         torusNode = torusScene?.rootNode
+        torusNode!.name = "torus"
+        //**********************
+        
+        
+        //**********************
+        //ADD TAP GESTURE TO SCENE
+        //the target of this tap will be "self" (this class)
+        //passing info about the "sender:" (where we are taping down at) and handleTap function set up below with objective-C (@objc) tag
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        //select number of taps needed to trigger
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        //add the gesture recognizer to the scene view
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
         //**********************
     }
     
     
+    //**************************
+    //FUNCTION TO HANDLE TAP GESTURES
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        //get a CGpoint variable for our touch on the screen (x and y location)
+        let touchLocation = sender.location(in: sceneView)
+        
+        //hitTestResult is an array of possible hits
+        // option [:] means we are getting a hit test for everything (no options means all options selected)
+        guard let hitTestResult = sceneView.hitTest(touchLocation, options: [:] ).first?.node else { return }
+        
+        //if the thing that we hit happens to be the boxNode
+        if hitTestResult.name == "torus" {
+            //print the message in the debug log
+            print("this is the apple lab")
+        }
+        
+        //switch case setup for possible hit test results and the output for each to the debug log
+        //switch hitResult.node {
+        switch hitTestResult.name {
+        case "box":
+            print("this is the apple lab")
+        case "sphere":
+            print("this is the exit")
+        case "capsule":
+            print("this is the windows lab")
+        case "pyramid":
+            print("this is the exit again")
+        case "torus":
+            print("this is the lobby desk")
+        default:
+            break
+        }
+    }
+    //***************************
+ 
     //tell ARkit what images to look for
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -113,7 +178,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //initialize a SCNPlane with a width and a height from "size"
             let plane = SCNPlane(width: size.width, height: size.height)
             //give the plane a material from a UIcolor with alpha for transparency (0.5 = half transparent)
-            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.5)
+            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.2)
             //give the plane some corner radiuses (in milimeters)
             plane.cornerRadius = 0.005
             //create a node to attach the geometry from the "plane" var
@@ -132,16 +197,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             var shapeNode: SCNNode?
             //if the rawValue of the enumerator (set up top by vars) equals the imageAnchor...
             switch imageAnchor.referenceImage.name {
-            case ImageType.appleLab.rawValue :
+            case ImageType.appleLab1.rawValue :
                 //set our temporary wrapped shapNode equal to the boxNode
                 shapeNode = boxNode
-            case ImageType.exitLab.rawValue :
+            case ImageType.exitLab1.rawValue, ImageType.exitLab2.rawValue :
                 shapeNode = sphereNode
-            case ImageType.lobDesk.rawValue :
+            case ImageType.lobDesk1.rawValue, ImageType.lobDesk2.rawValue, ImageType.lobDesk3.rawValue, ImageType.lobDesk4.rawValue, ImageType.lobDesk5.rawValue, ImageType.lobDesk6.rawValue, ImageType.lobDesk7.rawValue :
                 shapeNode = torusNode
-            case ImageType.winLab.rawValue :
+            case ImageType.winLab1.rawValue, ImageType.winLab2.rawValue, ImageType.winLab3.rawValue, ImageType.winLab4.rawValue :
                 shapeNode = capsuleNode
-            case ImageType.exitLab2.rawValue :
+            case ImageType.lobPC1.rawValue, ImageType.lobPC2.rawValue, ImageType.lobPC3.rawValue, ImageType.lobPC4.rawValue :
                 shapeNode = pyramidNode
                 //add a default and break to cover all other possibilities and get out of the switch statement
             default:

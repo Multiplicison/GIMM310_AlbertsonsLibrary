@@ -10,46 +10,55 @@ class AuthController: UIViewController {
     //private var atLib = Bool?
     @IBOutlet weak var startButton: UIButton!
     
-   // var helloWorldTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(AuthController.showButt), userInfo: nil, repeats: true)
+  //timer to check if user is in range of library
+     var timer = Timer()
     
   
     
-    
-   // var timer = Timer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set the view's delegate
+ //starts location services
         locationManager.initialize()
-       // locationManager.delegate = self
         toggleLocationTracking()
         
-        print(locationManager.atLibrary)
+      
         
- while (locationManager.atLibrary == false)
- {
-    if ( locationManager.atLibrary == true)
-    {
-        
-        startButton.isHidden = false
+
+        //hides start button by default until user is in range of library
+        startButton.isHidden = true
+       locationManager.atLibrary = false
     
-        }
-        
-        
-    }
+   //starts timer
+     scheduledTimerWithTimeInterval()
     
    
-    
-   func update(_ currentTime: TimeInterval) {
-      
-    
-    print("working")
-    
-            
-        }
         
         
     }
+    
+    func scheduledTimerWithTimeInterval(){
+ 
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("inRange"), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func inRange(){
+        
+        
+     
+        if (locationManager.atLibrary == true)
+        
+        {
+            
+            startButton.isHidden = false
+            
+            
+        }
+       
+    }
+    
+    
     
     @IBAction func showButton(_ sender: Any) {
         

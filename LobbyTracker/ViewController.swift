@@ -4,9 +4,10 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
     @IBOutlet var sceneView: ARSCNView!
     
+    @IBOutlet weak var tapOutputLabel: UILabel!
     //***********************
     //vars to hold our 3D shapes (made as optional(thus the "?") because it's not always going to be detected)
     var sphereNode: SCNNode?
@@ -20,24 +21,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     //************************
     //enumerator to be used for switch statements down in func viewWillDisappear()
     enum ImageType : String {
-        case appleLab1 = "appleLabDoorMarker2"
-        case winLab1 = "winLapMarker"
-        case winLab2 = "bigDaddyMarker"
-        case winLab3 = "marioMarker"
-        case winLab4 = "winLabWallFullMarker"
-        case exitLab1 = "exitMarker1"
-        case exitLab2 = "extMarker"
-        case lobDesk1 = "lobDeskMarker1"
-        case lobDesk2 = "lobDeskCornerMarker"
-        case lobDesk3 = "libDeskPcMarker"
-        case lobDesk4 = "deskPanelLGMarker"
-        case lobDesk5 = "deskPanelSmMarker"
-        case lobDesk6 = "bsuFlagMarker"
-        case lobDesk7 = "skateRackMarker"
-        case lobPC1 = "pcScreenMarker"
-        case lobPC2 = "pcMarker1"
-        case lobPC3 = "pcMarker2"
-        case lobPC4 = "pcMarker3"
+        
+        //*****************4DIRECTION RESOURCE GROUP***************
+        //case winLab1 = "WinLab1"
+        //case winLab2 = "WinLab2"
+        case winLab3 = "WinLab3"
+        //case appleLab1 = "AppleLab1"
+        //case appleLab2 = "AppleLab2"
+        case appleLab3 = "AppleLab3"
+        //case lobPC1 = "LobPC1"
+        //case lobPC2 = "LobPC2"
+        case lobPC3 = "LobPC3"
+        //case lobDesk1 = "LobDesk1"
+        //case lobDesk2 = "LobDesk2"
+        case lobDesk3 = "LobDesk3"
+        case appleDoor = "LabDoorB"
+        //*****************4DIRECTION RESOURCE GROUP***************
     }
     //************************
     
@@ -46,6 +45,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         // Set the view's delegate
         sceneView.delegate = self
+        
+        //set text output to display nothing for the moment
+        tapOutputLabel.text = ""
         
         //enable our lighting
         sceneView.autoenablesDefaultLighting = true
@@ -59,7 +61,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let torusScene = SCNScene(named: "art.scnassets/Torus.scn")
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
-        boxNode!.name = "box"
+        boxNode!.name = "boxGroup"
         sphereNode = sphereScene?.rootNode
         sphereNode!.name = "sphere"
         capsuleNode = capsuleScene?.rootNode
@@ -94,31 +96,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // option [:] means we are getting a hit test for everything (no options means all options selected)
         guard let hitTestResult = sceneView.hitTest(touchLocation, options: [:] ).first?.node else { return }
         
-        //if the thing that we hit happens to be the boxNode
-        if hitTestResult.name == "torus" {
-            //print the message in the debug log
-            print("this is the apple lab")
-        }
-        
         //switch case setup for possible hit test results and the output for each to the debug log
         //switch hitResult.node {
         switch hitTestResult.name {
         case "box":
-            print("this is the apple lab")
+            tapOutputLabel.text = "this is the Windows Lab"
         case "sphere":
-            print("this is the exit")
+            tapOutputLabel.text = "this is the Exit"
         case "capsule":
-            print("this is the windows lab")
+            tapOutputLabel.text = "these are the Lobby PCs"
         case "pyramid":
-            print("this is the exit again")
+            tapOutputLabel.text = "this is the Front Desk"
         case "torus":
-            print("this is the lobby desk")
+            tapOutputLabel.text = "this is the Apple Lab"
         default:
             break
         }
     }
     //***************************
- 
+    
     //tell ARkit what images to look for
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -139,12 +135,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         //*******************************
         //LET ARKIT KNOW WHAT TO LOOK FOR
-        if let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "LobbyImages", bundle: Bundle.main) {
+        //if let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "LobbyImages", bundle: Bundle.main) {
+        
+        //*************4DIRECTIONS RESOURSE GROUP*****************
+        if let trackingImages = ARReferenceImage.referenceImages(inGroupNamed: "4Directions", bundle: Bundle.main) {
+            //*************4DIRECTIONS RESOURSE GROUP*****************
+            
+            
             //if we can see images in this group set the images to track to "trackingImages"
             configuration.trackingImages = trackingImages
             //set the number of images we want to track at the same time
             configuration.maximumNumberOfTrackedImages = 5
-        //******************************
+            //******************************
+            
         }
         
         //start the session
@@ -158,7 +161,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
     
     // MARK: - ARSCNViewDelegate
     
@@ -178,7 +181,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //initialize a SCNPlane with a width and a height from "size"
             let plane = SCNPlane(width: size.width, height: size.height)
             //give the plane a material from a UIcolor with alpha for transparency (0.5 = half transparent)
-            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.2)
+            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.1)
             //give the plane some corner radiuses (in milimeters)
             plane.cornerRadius = 0.005
             //create a node to attach the geometry from the "plane" var
@@ -197,18 +200,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             var shapeNode: SCNNode?
             //if the rawValue of the enumerator (set up top by vars) equals the imageAnchor...
             switch imageAnchor.referenceImage.name {
-            case ImageType.appleLab1.rawValue :
-                //set our temporary wrapped shapNode equal to the boxNode
+                
+            //*************4DIRECTIONS RESOURSE GROUP*****************
+            case ImageType.winLab3.rawValue :
                 shapeNode = boxNode
-            case ImageType.exitLab1.rawValue, ImageType.exitLab2.rawValue :
+            case ImageType.appleLab3.rawValue:
                 shapeNode = sphereNode
-            case ImageType.lobDesk1.rawValue, ImageType.lobDesk2.rawValue, ImageType.lobDesk3.rawValue, ImageType.lobDesk4.rawValue, ImageType.lobDesk5.rawValue, ImageType.lobDesk6.rawValue, ImageType.lobDesk7.rawValue :
-                shapeNode = torusNode
-            case ImageType.winLab1.rawValue, ImageType.winLab2.rawValue, ImageType.winLab3.rawValue, ImageType.winLab4.rawValue :
-                shapeNode = capsuleNode
-            case ImageType.lobPC1.rawValue, ImageType.lobPC2.rawValue, ImageType.lobPC3.rawValue, ImageType.lobPC4.rawValue :
+            case ImageType.lobDesk3.rawValue  :
                 shapeNode = pyramidNode
-                //add a default and break to cover all other possibilities and get out of the switch statement
+            case ImageType.lobPC3.rawValue :
+                shapeNode = capsuleNode
+            case ImageType.appleDoor.rawValue :
+                shapeNode = torusNode
+                //*************4DIRECTIONS RESOURSE GROUP*****************
+                
+            //add a default and break to cover all other possibilities and get out of the switch statement
             default:
                 break
             }
@@ -218,11 +224,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //************************************
             //CREATE SPINNING MOVEMENT FOR THE 3D OBJECT (shapeNode)
             //use type "ScneneAction" with no spin on x, 2*pi (360deg) on y, and no spin on z axis, with a duration of 10 seconds
-            let shapeSpin = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 10)
+            //let shapeSpin = SCNAction.rotateBy(x: 0, y: 2 * .pi, z: 0, duration: 10)
             //have it repeat the SCNAction(shapeSpin) forever
-            let repeatSpin = SCNAction.repeatForever(shapeSpin)
+            //let repeatSpin = SCNAction.repeatForever(shapeSpin)
             //set this action for the shapeNode
-            shapeNode?.runAction(repeatSpin)
+            //shapeNode?.runAction(repeatSpin)
             //************************************
             
             

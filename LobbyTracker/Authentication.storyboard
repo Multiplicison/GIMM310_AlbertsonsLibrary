@@ -58,22 +58,35 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnb-bb-vr7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TapOutputLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBv-t7-Cki">
+                                <rect key="frame" x="148" y="724" width="118" height="71"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" id="8ar-Rv-sSd"/>
+                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" id="Ibc-pW-IpO"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="leading" secondItem="d65-qn-LkO" secondAttribute="leading" id="Kfr-CO-nFj"/>
+                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" id="XCq-HI-cAA"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="trailing" secondItem="d65-qn-LkO" secondAttribute="trailing" id="ZLF-C5-2hb"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="top" secondItem="ahu-8h-I2N" secondAttribute="top" id="hp3-Yu-IoI"/>
+                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" id="wHZ-a7-0gQ"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="bottom" secondItem="d65-qn-LkO" secondAttribute="bottom" id="x4T-ky-tt5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d65-qn-LkO"/>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="fnb-bb-vr7" id="q63-8g-mL3"/>
+                        <outlet property="tapOutputLabel" destination="wBv-t7-Cki" id="UEN-DI-Z6y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0F-cZ-Y1z" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="666.66666666666674" y="20.758928571428569"/>
         </scene>
     </scenes>
 </document>

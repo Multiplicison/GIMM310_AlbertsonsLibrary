@@ -25,6 +25,7 @@
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="showButton:" destination="odj-V8-5Ls" eventType="touchUpInside" id="b9S-QD-pUi"/>
+                                    <segue destination="DHM-f3-PnD" kind="show" id="J4z-iZ-C1t"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finding location..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z40-24-i1K">
@@ -45,6 +46,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAz-zs-rwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="158" y="40"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rvR-TP-TH6">
+            <objects>
+                <viewController id="DHM-f3-PnD" customClass="ViewController" customModule="LobbyTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ahu-8h-I2N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnb-bb-vr7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fnb-bb-vr7" firstAttribute="leading" secondItem="d65-qn-LkO" secondAttribute="leading" id="Kfr-CO-nFj"/>
+                            <constraint firstItem="fnb-bb-vr7" firstAttribute="trailing" secondItem="d65-qn-LkO" secondAttribute="trailing" id="ZLF-C5-2hb"/>
+                            <constraint firstItem="fnb-bb-vr7" firstAttribute="top" secondItem="ahu-8h-I2N" secondAttribute="top" id="hp3-Yu-IoI"/>
+                            <constraint firstItem="fnb-bb-vr7" firstAttribute="bottom" secondItem="d65-qn-LkO" secondAttribute="bottom" id="x4T-ky-tt5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d65-qn-LkO"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="fnb-bb-vr7" id="q63-8g-mL3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0F-cZ-Y1z" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

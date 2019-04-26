@@ -13,8 +13,6 @@
 		A0D79D05226BA0E900354C31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D79D03226BA0E900354C31 /* Main.storyboard */; };
 		A0D79D07226BA0EA00354C31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D79D06226BA0EA00354C31 /* Assets.xcassets */; };
 		A0D79D0A226BA0EA00354C31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D79D08226BA0EA00354C31 /* LaunchScreen.storyboard */; };
-		A0D79D15226BA0EA00354C31 /* LobbyTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D79D14226BA0EA00354C31 /* LobbyTrackerTests.swift */; };
-		A0D79D20226BA0EA00354C31 /* LobbyTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D79D1F226BA0EA00354C31 /* LobbyTrackerUITests.swift */; };
 		B359CE86226F7AE5002D8754 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B359CE85226F7AE5002D8754 /* LocationManager.swift */; };
 		B359CE8B226F7B5C002D8754 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B359CE8A226F7B5C002D8754 /* Constants.swift */; };
 		B359CE8F226F84EB002D8754 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B359CE8E226F84EB002D8754 /* Authentication.storyboard */; };
@@ -49,13 +47,9 @@
 		A0D79D09226BA0EA00354C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0D79D0B226BA0EA00354C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0D79D10226BA0EA00354C31 /* LobbyTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobbyTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0D79D14226BA0EA00354C31 /* LobbyTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTrackerTests.swift; sourceTree = "<group>"; };
-		A0D79D16226BA0EA00354C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0D79D1B226BA0EA00354C31 /* LobbyTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobbyTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0D79D1F226BA0EA00354C31 /* LobbyTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTrackerUITests.swift; sourceTree = "<group>"; };
-		A0D79D21226BA0EA00354C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B359CE85226F7AE5002D8754 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = "../../../../ARKit_by_Tutorials_v2.0/13-locations-beacons/final/RazeAd/logic/LocationManager.swift"; sourceTree = "<group>"; };
-		B359CE8A226F7B5C002D8754 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "../../../../ARKit_by_Tutorials_v2.0/13-locations-beacons/final/RazeAd/data/Constants.swift"; sourceTree = "<group>"; };
+		B359CE85226F7AE5002D8754 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B359CE8A226F7B5C002D8754 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B359CE8E226F84EB002D8754 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		B364124F226ECA40007CE627 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B3FDBF32226F87D100600D9E /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
@@ -91,11 +85,7 @@
 			children = (
 				B364124F226ECA40007CE627 /* Default-568h@2x.png */,
 				A0D79CFC226BA0E900354C31 /* LobbyTracker */,
-				A0D79D13226BA0EA00354C31 /* LobbyTrackerTests */,
-				A0D79D1E226BA0EA00354C31 /* LobbyTrackerUITests */,
 				A0D79CFB226BA0E900354C31 /* Products */,
-				B359CE84226F7AC2002D8754 /* Logic */,
-				B359CE89226F7B4C002D8754 /* data */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,50 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				A0D79CFD226BA0E900354C31 /* AppDelegate.swift */,
-				A0D79CFF226BA0E900354C31 /* art.scnassets */,
 				A0D79D01226BA0E900354C31 /* ViewController.swift */,
 				A0D79D03226BA0E900354C31 /* Main.storyboard */,
+				A0D79CFF226BA0E900354C31 /* art.scnassets */,
 				A0D79D06226BA0EA00354C31 /* Assets.xcassets */,
 				A0D79D08226BA0EA00354C31 /* LaunchScreen.storyboard */,
 				A0D79D0B226BA0EA00354C31 /* Info.plist */,
 				B359CE8E226F84EB002D8754 /* Authentication.storyboard */,
 				B3FDBF32226F87D100600D9E /* AuthController.swift */,
-			);
-			path = LobbyTracker;
-			sourceTree = "<group>";
-		};
-		A0D79D13226BA0EA00354C31 /* LobbyTrackerTests */ = {
-			isa = PBXGroup;
-			children = (
-				A0D79D14226BA0EA00354C31 /* LobbyTrackerTests.swift */,
-				A0D79D16226BA0EA00354C31 /* Info.plist */,
-			);
-			path = LobbyTrackerTests;
-			sourceTree = "<group>";
-		};
-		A0D79D1E226BA0EA00354C31 /* LobbyTrackerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A0D79D1F226BA0EA00354C31 /* LobbyTrackerUITests.swift */,
-				A0D79D21226BA0EA00354C31 /* Info.plist */,
-			);
-			path = LobbyTrackerUITests;
-			sourceTree = "<group>";
-		};
-		B359CE84226F7AC2002D8754 /* Logic */ = {
-			isa = PBXGroup;
-			children = (
 				B359CE85226F7AE5002D8754 /* LocationManager.swift */,
-			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
-		B359CE89226F7B4C002D8754 /* data */ = {
-			isa = PBXGroup;
-			children = (
 				B359CE8A226F7B5C002D8754 /* Constants.swift */,
 			);
-			path = data;
+			path = LobbyTracker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +263,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D79D15226BA0EA00354C31 /* LobbyTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +270,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D79D20226BA0EA00354C31 /* LobbyTrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +436,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Cwall.LobbyTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = Cwall.LobbyTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -500,7 +456,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Cwall.LobbyTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = Cwall.LobbyTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

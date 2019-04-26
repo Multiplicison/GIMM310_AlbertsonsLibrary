@@ -6,8 +6,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var tapOutputLabel: UILabel!
     
+    @IBOutlet weak var tapOutputLabel: UILabel!
     //***********************
     //vars to hold our 3D shapes (made as optional(thus the "?") because it's not always going to be detected)
     var sphereNode: SCNNode?

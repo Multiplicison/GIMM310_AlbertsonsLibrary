@@ -54,11 +54,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         //**********************
         //SET UP REF PATH AND VARS FOR THE 3D OBJECTS
-        let boxScene = SCNScene(named: "art.scnassets/Box.scn")
-        let sphereScene = SCNScene(named: "art.scnassets/Sphere.scn")
-        let capsuleScene = SCNScene(named: "art.scnassets/Capsule.scn")
-        let pyramidScene = SCNScene(named: "art.scnassets/Pyramid.scn")
-        let torusScene = SCNScene(named: "art.scnassets/Torus.scn")
+        let boxScene = SCNScene(named: "art.scnassets/MarkerWindows.scn")
+        let sphereScene = SCNScene(named: "art.scnassets/MarkerEXIT.scn")
+        let capsuleScene = SCNScene(named: "art.scnassets/MarkerLobbyPC.scn")
+        let pyramidScene = SCNScene(named: "art.scnassets/MarkerHELP.scn")
+        let torusScene = SCNScene(named: "art.scnassets/MarkerMac.scn")
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
         boxNode!.name = "boxGroup"

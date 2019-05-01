@@ -7,7 +7,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
+    ////////////////////
+    //this testOutputLabel is for DEGUB PURPOSES and can be removed when it is no longer needed for the App
     @IBOutlet weak var tapOutputLabel: UILabel!
+    ///////////////////
+    
     //***********************
     //vars to hold our 3D shapes (made as optional(thus the "?") because it's not always going to be detected)
     var sphereNode: SCNNode?
@@ -23,17 +27,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     enum ImageType : String {
         
         //*****************4DIRECTION RESOURCE GROUP***************
-        //case winLab1 = "WinLab1"
-        //case winLab2 = "WinLab2"
         case winLab3 = "WinLab3"
-        //case appleLab1 = "AppleLab1"
-        //case appleLab2 = "AppleLab2"
         case appleLab3 = "AppleLab3"
-        //case lobPC1 = "LobPC1"
-        //case lobPC2 = "LobPC2"
         case lobPC3 = "LobPC3"
-        //case lobDesk1 = "LobDesk1"
-        //case lobDesk2 = "LobDesk2"
         case lobDesk3 = "LobDesk3"
         case appleDoor = "LabDoorB"
         //*****************4DIRECTION RESOURCE GROUP***************
@@ -99,15 +95,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //switch case setup for possible hit test results and the output for each to the debug log
         //switch hitResult.node {
         switch hitTestResult.name {
-        case "box":
+        case "WinLabObject":
             tapOutputLabel.text = "this is the Windows Lab"
-        case "sphere":
+        case "LobbyExitObject":
             tapOutputLabel.text = "this is the Exit"
-        case "capsule":
+        case "LobbyPCObject":
             tapOutputLabel.text = "these are the Lobby PCs"
-        case "pyramid":
+        case "LobbyDeskObject":
             tapOutputLabel.text = "this is the Front Desk"
-        case "torus":
+        case "MacLabObject":
             tapOutputLabel.text = "this is the Apple Lab"
         default:
             break

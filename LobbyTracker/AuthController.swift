@@ -39,7 +39,7 @@ class AuthController: UIViewController {
     func scheduledTimerWithTimeInterval(){
  
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("inRange"), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(("inRange")), userInfo: nil, repeats: true)
     }
     
     

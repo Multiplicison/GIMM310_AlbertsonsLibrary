@@ -5,12 +5,36 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet var sceneView: ARSCNView!
     
+    
+    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var HD: UIImageView!
+
+
+    @IBOutlet weak var LR: UIImageView!
+    
+    @IBOutlet weak var CM: UIImageView!
     ////////////////////
     //this testOutputLabel is for DEGUB PURPOSES and can be removed when it is no longer needed for the App
-    @IBOutlet weak var tapOutputLabel: UILabel!
-    ///////////////////
+   
+    @IBOutlet weak var testOutputLabel: UILabel!
+    
+
+    
+    @IBAction func showImage(_ sender: UIButton) {
+        CM.isHidden = true
+        LR.isHidden = false
+        
+    }
+    
+    @IBAction func showVideo(_ sender: UIButton) {
+    }
+
+    @IBAction func showLabel(_ sender: UIButton) {
+        testOutputLabel?.isHidden = false
+        testOutputLabel!.numberOfLines = 0
+        testOutputLabel.text = "FIRST: Connect to Wifi\nSECOND: Sign in\nTHIRD: Enjoy your searches! "
+    }
     
     //***********************
     //vars to hold our 3D shapes (made as optional(thus the "?") because it's not always going to be detected)
@@ -19,7 +43,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var capsuleNode: SCNNode?
     var pyramidNode: SCNNode?
     var torusNode: SCNNode?
+    var appleNode: SCNNode?
+    var pcNode: SCNNode?
+    var exitNode: SCNNode?
+    
     //**************************
+
+    @IBAction func backButton(_ sender: UIButton) {
+        HD.isHidden = true
+        CM.isHidden = true
+        LR.isHidden = true
+        
+        testOutputLabel!.isHidden = true
+   
+        appleNode?.removeFromParentNode()
+        appleNode!.isHidden = true
+        
+        exitNode?.removeFromParentNode()
+        exitNode!.isHidden = true
+        
+        pcNode?.removeFromParentNode()
+        pcNode!.isHidden = true
+        //exitNode!.isHidden = true
+    }
+    
     
     
     //************************
@@ -35,15 +82,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //*****************4DIRECTION RESOURCE GROUP***************
     }
     //************************
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
         sceneView.delegate = self
         
-        //set text output to display nothing for the moment
-        tapOutputLabel.text = ""
+       HD.isHidden = true
+        CM.isHidden = true
+        LR.isHidden = true
+    
+       testOutputLabel.text = ""
         
         //enable our lighting
         sceneView.autoenablesDefaultLighting = true
@@ -55,6 +105,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let capsuleScene = SCNScene(named: "art.scnassets/MarkerLobbyPC.scn")
         let pyramidScene = SCNScene(named: "art.scnassets/MarkerHELP.scn")
         let torusScene = SCNScene(named: "art.scnassets/MarkerMac.scn")
+        let pcScene = SCNScene(named: "art.scnassets/Tapped/PCReal.scn")
+        let exitScene = SCNScene(named: "art.scnassets/Tapped/ExitReal.scn")
+        let appleScene = SCNScene(named: "art.scnassets/Tapped/AppleReal.scn")
+      
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
         boxNode!.name = "boxGroup"
@@ -66,6 +120,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pyramidNode!.name = "pyramid"
         torusNode = torusScene?.rootNode
         torusNode!.name = "torus"
+        pcNode = pcScene?.rootNode
+        pcNode!.name = "pc"
+        exitNode = exitScene?.rootNode
+        exitNode!.name = "exit"
+        appleNode = appleScene?.rootNode
+        appleNode!.name = "apple"
         //**********************
         
         
@@ -80,6 +140,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         //**********************
     }
+ 
+  
+    
+    
     
     
     //**************************
@@ -93,18 +157,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let hitTestResult = sceneView.hitTest(touchLocation, options: [:] ).first?.node else { return }
         
         //switch case setup for possible hit test results and the output for each to the debug log
+        
+        
         //switch hitResult.node {
         switch hitTestResult.name {
         case "WinLabObject":
-            tapOutputLabel.text = "this is the Windows Lab"
+            boxNode!.addChildNode(pcNode!)
+            pcNode?.isHidden = false
+            
         case "LobbyExitObject":
-            tapOutputLabel.text = "this is the Exit"
+            sphereNode!.addChildNode(exitNode!)
+            exitNode?.isHidden = false
+            
         case "LobbyPCObject":
-            tapOutputLabel.text = "these are the Lobby PCs"
+          CM.isHidden = false
+        
         case "LobbyDeskObject":
-            tapOutputLabel.text = "this is the Front Desk"
+           HD.isHidden = false
+            
         case "MacLabObject":
-            tapOutputLabel.text = "this is the Apple Lab"
+            torusNode!.addChildNode(appleNode!)
+            appleNode?.isHidden = false
+            
         default:
             break
         }
@@ -188,8 +262,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //add the planeNode to the "node" var that will be returned when this function is called
             node.addChildNode(planeNode)
             //************************************
-            
-            
+      
             //************************************
             //ASSIGN THE 3D OBJECT NODE TO THE ANCHOR
             //figure out which image you are looking at (imageAnchor has a ref to the image name)
@@ -208,12 +281,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 shapeNode = capsuleNode
             case ImageType.appleDoor.rawValue :
                 shapeNode = torusNode
+          
                 //*************4DIRECTIONS RESOURSE GROUP*****************
                 
             //add a default and break to cover all other possibilities and get out of the switch statement
             default:
                 break
+                
+                
             }
+            
+      
             //************************************
             
             

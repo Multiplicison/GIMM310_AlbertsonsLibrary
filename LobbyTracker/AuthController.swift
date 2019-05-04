@@ -25,7 +25,7 @@ class AuthController: UIViewController {
         
 
         //hides start button by default until user is in range of library
-        startButton.isHidden = true
+        startButton.isHidden = false
        locationManager.atLibrary = false
     
    //starts timer

@@ -59,7 +59,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnb-bb-vr7">
+                            <arscnView multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnb-bb-vr7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HD.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dqI-Cs-0vf">
@@ -99,10 +99,25 @@
                                     <action selector="showVideo:" destination="DHM-f3-PnD" eventType="touchUpInside" id="pat-tQ-JQD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-NC-N3G">
-                                <rect key="frame" x="348" y="58" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="top" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-NC-N3G">
+                                <rect key="frame" x="164" y="44" width="89" height="31"/>
+                                <color key="backgroundColor" red="0.13129616990000001" green="0.17716211000000001" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="7lI-Gn-yLl"/>
+                                    <constraint firstAttribute="height" constant="37" id="Dnz-Py-Sy7"/>
+                                </constraints>
+                                <color key="tintColor" red="0.13129616990000001" green="0.17716211000000001" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Back">
+                                            <attributes>
+                                                <color key="NSColor" red="0.95154239356059056" green="1" blue="0.96195362686840769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="24" name="LucidaGrande"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="backButton:" destination="DHM-f3-PnD" eventType="touchUpInside" id="Z58-ZF-xcO"/>
                                 </connections>
@@ -111,12 +126,28 @@
                                 <rect key="frame" x="87" y="184" width="240" height="335"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label text output" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWZ-x1-m9Q">
+                                <rect key="frame" x="75.5" y="195.5" width="263" height="505"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="505" id="cNR-wk-E4m"/>
+                                    <constraint firstAttribute="width" constant="263" id="qz1-30-krW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.98050922929999995" green="0.98050922929999995" blue="0.98050922929999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="leading" secondItem="d65-qn-LkO" secondAttribute="leading" id="Kfr-CO-nFj"/>
+                            <constraint firstItem="2Ip-NC-N3G" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" constant="-394" id="PzS-Tq-kH9"/>
+                            <constraint firstItem="xWZ-x1-m9Q" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" id="VX8-xz-24e"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="trailing" secondItem="d65-qn-LkO" secondAttribute="trailing" id="ZLF-C5-2hb"/>
+                            <constraint firstItem="xWZ-x1-m9Q" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" id="b2Q-SX-STh"/>
+                            <constraint firstItem="2Ip-NC-N3G" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" constant="2.5" id="deZ-kj-R07"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="top" secondItem="ahu-8h-I2N" secondAttribute="top" id="hp3-Yu-IoI"/>
+                            <constraint firstItem="2Ip-NC-N3G" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" constant="2.5" id="iRu-h3-JVC"/>
+                            <constraint firstItem="2Ip-NC-N3G" firstAttribute="top" secondItem="d65-qn-LkO" secondAttribute="top" id="rfh-4q-7sI"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="bottom" secondItem="d65-qn-LkO" secondAttribute="bottom" id="x4T-ky-tt5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d65-qn-LkO"/>
@@ -126,6 +157,7 @@
                         <outlet property="HD" destination="dqI-Cs-0vf" id="p0j-Yh-kAs"/>
                         <outlet property="LR" destination="wYB-KO-Cgl" id="NX8-4Q-33m"/>
                         <outlet property="sceneView" destination="fnb-bb-vr7" id="q63-8g-mL3"/>
+                        <outlet property="testOutputLabel" destination="xWZ-x1-m9Q" id="zpZ-TW-n66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0F-cZ-Y1z" sceneMemberID="firstResponder"/>

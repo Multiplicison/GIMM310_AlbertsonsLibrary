@@ -17,7 +17,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     ////////////////////
     //this testOutputLabel is for DEGUB PURPOSES and can be removed when it is no longer needed for the App
    
-   
+    @IBOutlet weak var testOutputLabel: UILabel!
+    
 
     
     @IBAction func showImage(_ sender: UIButton) {
@@ -30,8 +31,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @IBAction func showLabel(_ sender: UIButton) {
-        
-        //tapOutputLabel.text = "FIRST: Connect to Wifi SECOND: Sign in THIRD: Enjoy your searches "
+        testOutputLabel?.isHidden = false
+        testOutputLabel!.numberOfLines = 0
+        testOutputLabel.text = "FIRST: Connect to Wifi\nSECOND: Sign in\nTHIRD: Enjoy your searches! "
     }
     
     //***********************
@@ -51,10 +53,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         HD.isHidden = true
         CM.isHidden = true
         LR.isHidden = true
+        
+        testOutputLabel!.isHidden = true
+   
+        appleNode?.removeFromParentNode()
         appleNode!.isHidden = true
-        pcNode!.isHidden = true
+        
+        exitNode?.removeFromParentNode()
         exitNode!.isHidden = true
         
+        pcNode?.removeFromParentNode()
+        pcNode!.isHidden = true
+        //exitNode!.isHidden = true
     }
     
     
@@ -86,7 +96,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         CM.isHidden = true
         LR.isHidden = true
     
-        
+       testOutputLabel.text = ""
         
         //enable our lighting
         sceneView.autoenablesDefaultLighting = true
@@ -101,6 +111,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pcScene = SCNScene(named: "art.scnassets/Tapped/PCReal.scn")
         let exitScene = SCNScene(named: "art.scnassets/Tapped/ExitReal.scn")
         let appleScene = SCNScene(named: "art.scnassets/Tapped/AppleReal.scn")
+      
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
         boxNode!.name = "boxGroup"
@@ -155,32 +166,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         switch hitTestResult.name {
         case "WinLabObject":
             
-         //   backButton.isHidden = false
-
-            boxNode!.addChildNode(pcNode!)
-            //boxNode!.isHidden = true
-         
-    
-            
+boxNode!.addChildNode(pcNode!)
+            pcNode?.isHidden = false
+        
         case "LobbyExitObject":
-         
-            sphereNode!.addChildNode(exitNode!)
-        //sphereNode!.isHidden = true
-           
             
+sphereNode!.addChildNode(exitNode!)
+        exitNode?.isHidden = false
         case "LobbyPCObject":
           CM.isHidden = false
         
-            
         case "LobbyDeskObject":
            HD.isHidden = false
-        
-           
-            //tapOutputLabel.text = "this is the Front Desk"
             
         case "MacLabObject":
-          torusNode!.addChildNode(appleNode!)
-            
+    torusNode!.addChildNode(appleNode!)
+             appleNode?.isHidden = false
             
         default:
             break

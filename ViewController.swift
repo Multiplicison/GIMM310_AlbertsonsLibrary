@@ -5,9 +5,35 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet var sceneView: ARSCNView!
     
-    @IBOutlet weak var tapOutputLabel: UILabel!
+    
+    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var HD: UIImageView!
+
+
+    @IBOutlet weak var LR: UIImageView!
+    
+    @IBOutlet weak var CM: UIImageView!
+    ////////////////////
+    //this testOutputLabel is for DEGUB PURPOSES and can be removed when it is no longer needed for the App
+   
+   
+
+    
+    @IBAction func showImage(_ sender: UIButton) {
+        CM.isHidden = true
+        LR.isHidden = false
+        
+    }
+    
+    @IBAction func showVideo(_ sender: UIButton) {
+    }
+
+    @IBAction func showLabel(_ sender: UIButton) {
+        
+        //tapOutputLabel.text = "FIRST: Connect to Wifi SECOND: Sign in THIRD: Enjoy your searches "
+    }
+    
     //***********************
     //vars to hold our 3D shapes (made as optional(thus the "?") because it's not always going to be detected)
     var sphereNode: SCNNode?
@@ -15,7 +41,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var capsuleNode: SCNNode?
     var pyramidNode: SCNNode?
     var torusNode: SCNNode?
+    var appleNode: SCNNode?
+    var pcNode: SCNNode?
+    var exitNode: SCNNode?
+    
     //**************************
+
+    @IBAction func backButton(_ sender: UIButton) {
+        HD.isHidden = true
+        CM.isHidden = true
+        LR.isHidden = true
+        appleNode!.isHidden = true
+        pcNode!.isHidden = true
+        exitNode!.isHidden = true
+        
+    }
+    
     
     
     //************************
@@ -23,42 +64,43 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     enum ImageType : String {
         
         //*****************4DIRECTION RESOURCE GROUP***************
-        //case winLab1 = "WinLab1"
-        //case winLab2 = "WinLab2"
         case winLab3 = "WinLab3"
-        //case appleLab1 = "AppleLab1"
-        //case appleLab2 = "AppleLab2"
         case appleLab3 = "AppleLab3"
-        //case lobPC1 = "LobPC1"
-        //case lobPC2 = "LobPC2"
         case lobPC3 = "LobPC3"
-        //case lobDesk1 = "LobDesk1"
-        //case lobDesk2 = "LobDesk2"
         case lobDesk3 = "LobDesk3"
         case appleDoor = "LabDoorB"
         //*****************4DIRECTION RESOURCE GROUP***************
     }
     //************************
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
         sceneView.delegate = self
         
-        //set text output to display nothing for the moment
-        tapOutputLabel.text = ""
+      
+        
+       
+       HD.isHidden = true
+        CM.isHidden = true
+        LR.isHidden = true
+    
+        
         
         //enable our lighting
         sceneView.autoenablesDefaultLighting = true
         
         //**********************
         //SET UP REF PATH AND VARS FOR THE 3D OBJECTS
-        let boxScene = SCNScene(named: "art.scnassets/Box.scn")
-        let sphereScene = SCNScene(named: "art.scnassets/Sphere.scn")
-        let capsuleScene = SCNScene(named: "art.scnassets/Capsule.scn")
-        let pyramidScene = SCNScene(named: "art.scnassets/Pyramid.scn")
-        let torusScene = SCNScene(named: "art.scnassets/Torus.scn")
+        let boxScene = SCNScene(named: "art.scnassets/MarkerWindows.scn")
+        let sphereScene = SCNScene(named: "art.scnassets/MarkerEXIT.scn")
+        let capsuleScene = SCNScene(named: "art.scnassets/MarkerLobbyPC.scn")
+        let pyramidScene = SCNScene(named: "art.scnassets/MarkerHELP.scn")
+        let torusScene = SCNScene(named: "art.scnassets/MarkerMac.scn")
+        let pcScene = SCNScene(named: "art.scnassets/Tapped/PCReal.scn")
+        let exitScene = SCNScene(named: "art.scnassets/Tapped/ExitReal.scn")
+        let appleScene = SCNScene(named: "art.scnassets/Tapped/AppleReal.scn")
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
         boxNode!.name = "boxGroup"
@@ -70,6 +112,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pyramidNode!.name = "pyramid"
         torusNode = torusScene?.rootNode
         torusNode!.name = "torus"
+        pcNode = pcScene?.rootNode
+        pcNode!.name = "pc"
+        exitNode = exitScene?.rootNode
+        exitNode!.name = "exit"
+        appleNode = appleScene?.rootNode
+        appleNode!.name = "apple"
         //**********************
         
         
@@ -84,6 +132,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         //**********************
     }
+ 
+  
+    
+    
     
     
     //**************************
@@ -97,18 +149,39 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let hitTestResult = sceneView.hitTest(touchLocation, options: [:] ).first?.node else { return }
         
         //switch case setup for possible hit test results and the output for each to the debug log
+        
+        
         //switch hitResult.node {
         switch hitTestResult.name {
-        case "box":
-            tapOutputLabel.text = "this is the Windows Lab"
-        case "sphere":
-            tapOutputLabel.text = "this is the Exit"
-        case "capsule":
-            tapOutputLabel.text = "these are the Lobby PCs"
-        case "pyramid":
-            tapOutputLabel.text = "this is the Front Desk"
-        case "torus":
-            tapOutputLabel.text = "this is the Apple Lab"
+        case "WinLabObject":
+            
+         //   backButton.isHidden = false
+
+            boxNode!.addChildNode(pcNode!)
+            //boxNode!.isHidden = true
+         
+    
+            
+        case "LobbyExitObject":
+         
+            sphereNode!.addChildNode(exitNode!)
+        //sphereNode!.isHidden = true
+           
+            
+        case "LobbyPCObject":
+          CM.isHidden = false
+        
+            
+        case "LobbyDeskObject":
+           HD.isHidden = false
+        
+           
+            //tapOutputLabel.text = "this is the Front Desk"
+            
+        case "MacLabObject":
+          torusNode!.addChildNode(appleNode!)
+            
+            
         default:
             break
         }
@@ -192,8 +265,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //add the planeNode to the "node" var that will be returned when this function is called
             node.addChildNode(planeNode)
             //************************************
-            
-            
+      
             //************************************
             //ASSIGN THE 3D OBJECT NODE TO THE ANCHOR
             //figure out which image you are looking at (imageAnchor has a ref to the image name)
@@ -212,12 +284,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 shapeNode = capsuleNode
             case ImageType.appleDoor.rawValue :
                 shapeNode = torusNode
+          
                 //*************4DIRECTIONS RESOURSE GROUP*****************
                 
             //add a default and break to cover all other possibilities and get out of the switch statement
             default:
                 break
+                
+                
             }
+            
+      
             //************************************
             
             

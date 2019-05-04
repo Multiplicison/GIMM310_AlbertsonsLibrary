@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="odj-V8-5Ls">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="odj-V8-5Ls">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atx-RQ-mBf">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atx-RQ-mBf">
                                 <rect key="frame" x="161" y="650" width="92" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
@@ -28,15 +27,20 @@
                                     <segue destination="DHM-f3-PnD" kind="show" id="J4z-iZ-C1t"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Finding location..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z40-24-i1K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding location..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z40-24-i1K">
                                 <rect key="frame" x="38" y="137" width="338" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <color key="textColor" red="0.001727511213" green="0.598101522" blue="0.03238961311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="z40-24-i1K" firstAttribute="centerY" secondItem="IiW-EM-8b8" secondAttribute="centerY" constant="-284" id="aTb-Ff-EQd"/>
+                            <constraint firstItem="Atx-RQ-mBf" firstAttribute="centerY" secondItem="IiW-EM-8b8" secondAttribute="centerY" constant="235" id="kMO-Wg-ZC5"/>
+                            <constraint firstItem="z40-24-i1K" firstAttribute="centerX" secondItem="IiW-EM-8b8" secondAttribute="centerX" id="nsC-eL-ih2"/>
+                            <constraint firstItem="Atx-RQ-mBf" firstAttribute="centerX" secondItem="IiW-EM-8b8" secondAttribute="centerX" id="zHR-2H-XCG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fsa-wW-kxN"/>
                     </view>
                     <connections>
@@ -58,35 +62,78 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnb-bb-vr7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TapOutputLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBv-t7-Cki">
-                                <rect key="frame" x="148" y="724" width="118" height="71"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HD.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dqI-Cs-0vf">
+                                <rect key="frame" x="87" y="191" width="240" height="335"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CM.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6fU-Eb-32y">
+                                <rect key="frame" x="87" y="191" width="240" height="335"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeZ-GS-pxL">
+                                <rect key="frame" x="109" y="459" width="52" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="DHM-f3-PnD" eventType="touchUpInside" id="Pnz-1k-ld1"/>
+                                    <action selector="showLabel:" destination="DHM-f3-PnD" eventType="touchUpInside" id="wmv-bs-aaY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOL-mO-cJ8">
+                                <rect key="frame" x="103" y="278" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.13129616990000001" green="0.17716211000000001" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showImage:" destination="DHM-f3-PnD" eventType="touchUpInside" id="Uq4-nx-ATn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEk-ZB-UJY">
+                                <rect key="frame" x="121" y="373" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showVideo:" destination="DHM-f3-PnD" eventType="touchUpInside" id="pat-tQ-JQD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-NC-N3G">
+                                <rect key="frame" x="342" y="58" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="labRules.png" translatesAutoresizingMaskIntoConstraints="NO" id="wYB-KO-Cgl">
+                                <rect key="frame" x="87" y="184" width="240" height="335"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" id="8ar-Rv-sSd"/>
-                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" id="Ibc-pW-IpO"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="leading" secondItem="d65-qn-LkO" secondAttribute="leading" id="Kfr-CO-nFj"/>
-                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerX" secondItem="ahu-8h-I2N" secondAttribute="centerX" id="XCq-HI-cAA"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="trailing" secondItem="d65-qn-LkO" secondAttribute="trailing" id="ZLF-C5-2hb"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="top" secondItem="ahu-8h-I2N" secondAttribute="top" id="hp3-Yu-IoI"/>
-                            <constraint firstItem="wBv-t7-Cki" firstAttribute="centerY" secondItem="ahu-8h-I2N" secondAttribute="centerY" id="wHZ-a7-0gQ"/>
                             <constraint firstItem="fnb-bb-vr7" firstAttribute="bottom" secondItem="d65-qn-LkO" secondAttribute="bottom" id="x4T-ky-tt5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d65-qn-LkO"/>
                     </view>
                     <connections>
+                        <outlet property="CM" destination="6fU-Eb-32y" id="DmM-sV-NNb"/>
+                        <outlet property="HD" destination="dqI-Cs-0vf" id="p0j-Yh-kAs"/>
+                        <outlet property="LR" destination="wYB-KO-Cgl" id="NX8-4Q-33m"/>
                         <outlet property="sceneView" destination="fnb-bb-vr7" id="q63-8g-mL3"/>
-                        <outlet property="tapOutputLabel" destination="wBv-t7-Cki" id="UEN-DI-Z6y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0F-cZ-Y1z" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666.66666666666674" y="20.758928571428569"/>
+            <point key="canvasLocation" x="979.71014492753636" y="39.508928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CM.jpg" width="500" height="500"/>
+        <image name="HD.jpg" width="500" height="500"/>
+        <image name="labRules.png" width="320" height="523"/>
+    </resources>
 </document>

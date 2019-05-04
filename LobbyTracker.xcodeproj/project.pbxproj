@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211CA333227BD9E500EDED0F /* HD.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 211CA332227BD9E500EDED0F /* HD.jpg */; };
+		211CA337227BDC9500EDED0F /* CM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 211CA336227BDC9500EDED0F /* CM.jpg */; };
+		211CA356227DEF6000EDED0F /* labRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 211CA355227DEF5F00EDED0F /* labRules.png */; };
 		A0D79CFE226BA0E900354C31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D79CFD226BA0E900354C31 /* AppDelegate.swift */; };
 		A0D79D00226BA0E900354C31 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D79CFF226BA0E900354C31 /* art.scnassets */; };
 		A0D79D02226BA0E900354C31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D79D01226BA0E900354C31 /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		211CA332227BD9E500EDED0F /* HD.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HD.jpg; sourceTree = "<group>"; };
+		211CA336227BDC9500EDED0F /* CM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CM.jpg; sourceTree = "<group>"; };
+		211CA355227DEF5F00EDED0F /* labRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labRules.png; sourceTree = "<group>"; };
 		A0D79CFA226BA0E900354C31 /* LobbyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LobbyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D79CFD226BA0E900354C31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D79CFF226BA0E900354C31 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -80,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		211CA335227BDA2400EDED0F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				211CA355227DEF5F00EDED0F /* labRules.png */,
+				211CA336227BDC9500EDED0F /* CM.jpg */,
+				211CA332227BD9E500EDED0F /* HD.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		A0D79CF1226BA0E900354C31 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +118,7 @@
 		A0D79CFC226BA0E900354C31 /* LobbyTracker */ = {
 			isa = PBXGroup;
 			children = (
+				211CA335227BDA2400EDED0F /* Images */,
 				A0D79CFD226BA0E900354C31 /* AppDelegate.swift */,
 				A0D79D01226BA0E900354C31 /* ViewController.swift */,
 				A0D79D03226BA0E900354C31 /* Main.storyboard */,
@@ -224,7 +241,10 @@
 			files = (
 				B359CE8F226F84EB002D8754 /* Authentication.storyboard in Resources */,
 				A0D79D00226BA0E900354C31 /* art.scnassets in Resources */,
+				211CA337227BDC9500EDED0F /* CM.jpg in Resources */,
+				211CA356227DEF6000EDED0F /* labRules.png in Resources */,
 				A0D79D0A226BA0EA00354C31 /* LaunchScreen.storyboard in Resources */,
+				211CA333227BD9E500EDED0F /* HD.jpg in Resources */,
 				A0D79D07226BA0EA00354C31 /* Assets.xcassets in Resources */,
 				B3641250226ECA40007CE627 /* Default-568h@2x.png in Resources */,
 				A0D79D05226BA0E900354C31 /* Main.storyboard in Resources */,
@@ -431,13 +451,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q637X83SQG;
+				DEVELOPMENT_TEAM = SDTW6N92A8;
 				INFOPLIST_FILE = LobbyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.chrisross;
+				PRODUCT_BUNDLE_IDENTIFIER = o.edu.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -451,13 +471,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q637X83SQG;
+				DEVELOPMENT_TEAM = SDTW6N92A8;
 				INFOPLIST_FILE = LobbyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.chrisross;
+				PRODUCT_BUNDLE_IDENTIFIER = o.edu.tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

@@ -73,7 +73,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeZ-GS-pxL">
                                 <rect key="frame" x="109" y="459" width="52" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backButton:" destination="DHM-f3-PnD" eventType="touchUpInside" id="Pnz-1k-ld1"/>
                                     <action selector="showLabel:" destination="DHM-f3-PnD" eventType="touchUpInside" id="wmv-bs-aaY"/>
@@ -101,9 +100,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-NC-N3G">
-                                <rect key="frame" x="342" y="58" width="46" height="30"/>
+                                <rect key="frame" x="348" y="58" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="DHM-f3-PnD" eventType="touchUpInside" id="Z58-ZF-xcO"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="labRules.png" translatesAutoresizingMaskIntoConstraints="NO" id="wYB-KO-Cgl">
                                 <rect key="frame" x="87" y="184" width="240" height="335"/>

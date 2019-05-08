@@ -25,7 +25,7 @@ class AuthController: UIViewController {
         
 
         //hides start button by default until user is in range of library
-        startButton.isHidden = true
+        startButton.isHidden = false
        locationManager.atLibrary = false
     
    //starts timer
@@ -39,7 +39,7 @@ class AuthController: UIViewController {
     func scheduledTimerWithTimeInterval(){
  
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("inRange"), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(("inRange")), userInfo: nil, repeats: true)
     }
     
     

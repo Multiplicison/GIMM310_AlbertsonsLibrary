@@ -1,0 +1,47 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "resources" : [
+    {
+      "filename" : "AppleLab1.arreferenceimage"
+    },
+    {
+      "filename" : "AppleLab2.arreferenceimage"
+    },
+    {
+      "filename" : "AppleLab3.arreferenceimage"
+    },
+    {
+      "filename" : "LabDoorB.arreferenceimage"
+    },
+    {
+      "filename" : "LobDesk1.arreferenceimage"
+    },
+    {
+      "filename" : "LobDesk2.arreferenceimage"
+    },
+    {
+      "filename" : "LobDesk3.arreferenceimage"
+    },
+    {
+      "filename" : "LobPC1.arreferenceimage"
+    },
+    {
+      "filename" : "LobPC2.arreferenceimage"
+    },
+    {
+      "filename" : "LobPC3.arreferenceimage"
+    },
+    {
+      "filename" : "WinLab1.arreferenceimage"
+    },
+    {
+      "filename" : "WinLab2.arreferenceimage"
+    },
+    {
+      "filename" : "WinLab3.arreferenceimage"
+    }
+  ]
+}

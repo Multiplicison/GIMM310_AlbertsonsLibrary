@@ -9,17 +9,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var HD: UIImageView!
-
-
+    
+    
     @IBOutlet weak var LR: UIImageView!
     
     @IBOutlet weak var CM: UIImageView!
     ////////////////////
     //this testOutputLabel is for DEGUB PURPOSES and can be removed when it is no longer needed for the App
-   
+    
     @IBOutlet weak var testOutputLabel: UILabel!
     
-
+    
     
     @IBAction func showImage(_ sender: UIButton) {
         CM.isHidden = true
@@ -28,9 +28,43 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func showVideo(_ sender: UIButton) {
+        
+        CM.isHidden = true
+        
+        
+        guard let currentFrame = self.sceneView.session.currentFrame else {
+            return
+        }
+        
+        let videoNode = SKVideoNode(fileNamed: "computertutorial_1.mp4")
+        videoNode.play()
+        helpVideo = videoNode
+        
+        let skScene = SKScene(size: CGSize(width: 640, height: 480))
+        skScene.addChild(videoNode)
+        
+        videoNode.position = CGPoint(x: skScene.size.width/2, y: skScene.size.height/2)
+        videoNode.size = skScene.size
+        
+        let tvPlane = SCNPlane(width: 1.0, height: 0.75)
+        tvPlane.firstMaterial?.diffuse.contents = skScene
+        tvPlane.firstMaterial?.isDoubleSided = true
+        
+        let tvPlaneNode = SCNNode(geometry: tvPlane)
+        
+        var translation = matrix_identity_float4x4
+        translation.columns.3.z = -1.0
+        
+        tvPlaneNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
+        tvPlaneNode.eulerAngles = SCNVector3(Double.pi,45,0)
+        
+        videoPlaneNode = tvPlaneNode
+        
+        self.sceneView.scene.rootNode.addChildNode(tvPlaneNode)
     }
-
+    
     @IBAction func showLabel(_ sender: UIButton) {
+        backButton?.isHidden = false
         testOutputLabel?.isHidden = false
         testOutputLabel!.numberOfLines = 0
         testOutputLabel.text = "FIRST: Connect to Wifi\nSECOND: Sign in\nTHIRD: Enjoy your searches! "
@@ -46,16 +80,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var appleNode: SCNNode?
     var pcNode: SCNNode?
     var exitNode: SCNNode?
+    var videoPlaneNode: SCNNode?
+    var helpVideo: SKVideoNode?
     
     //**************************
-
+    
+    @IBOutlet weak var backButton: UIButton?
+    
     @IBAction func backButton(_ sender: UIButton) {
         HD.isHidden = true
         CM.isHidden = true
         LR.isHidden = true
         
         testOutputLabel!.isHidden = true
-   
+        
         appleNode?.removeFromParentNode()
         appleNode!.isHidden = true
         
@@ -65,6 +103,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pcNode?.removeFromParentNode()
         pcNode!.isHidden = true
         //exitNode!.isHidden = true
+        
+        helpVideo?.pause()
+        videoPlaneNode?.removeFromParentNode()
+        
+        backButton?.isHidden = true
     }
     
     
@@ -82,18 +125,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //*****************4DIRECTION RESOURCE GROUP***************
     }
     //************************
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
         sceneView.delegate = self
         
-       HD.isHidden = true
+        HD.isHidden = true
         CM.isHidden = true
         LR.isHidden = true
-    
-       testOutputLabel.text = ""
+        
+        testOutputLabel.text = ""
         
         //enable our lighting
         sceneView.autoenablesDefaultLighting = true
@@ -108,7 +151,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pcScene = SCNScene(named: "art.scnassets/Tapped/PCReal.scn")
         let exitScene = SCNScene(named: "art.scnassets/Tapped/ExitReal.scn")
         let appleScene = SCNScene(named: "art.scnassets/Tapped/AppleReal.scn")
-      
+        
         //assign var "boxNode" to the box.scn and assign it to the root node because there is only one thing in the scene
         boxNode = boxScene?.rootNode
         boxNode!.name = "boxGroup"
@@ -140,8 +183,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         //**********************
     }
- 
-  
+    
+    
     
     
     
@@ -164,20 +207,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         case "WinLabObject":
             boxNode!.addChildNode(pcNode!)
             pcNode?.isHidden = false
+            backButton?.isHidden = false
             
         case "LobbyExitObject":
             sphereNode!.addChildNode(exitNode!)
             exitNode?.isHidden = false
+            backButton?.isHidden = false
             
         case "LobbyPCObject":
-          CM.isHidden = false
-        
+            CM.isHidden = false
+            backButton?.isHidden = false
+            
         case "LobbyDeskObject":
-           HD.isHidden = false
+            HD.isHidden = false
+            backButton?.isHidden = false
             
         case "MacLabObject":
             torusNode!.addChildNode(appleNode!)
             appleNode?.isHidden = false
+            backButton?.isHidden = false
             
         default:
             break
@@ -262,7 +310,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //add the planeNode to the "node" var that will be returned when this function is called
             node.addChildNode(planeNode)
             //************************************
-      
+            
             //************************************
             //ASSIGN THE 3D OBJECT NODE TO THE ANCHOR
             //figure out which image you are looking at (imageAnchor has a ref to the image name)
@@ -281,7 +329,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 shapeNode = capsuleNode
             case ImageType.appleDoor.rawValue :
                 shapeNode = torusNode
-          
+                
                 //*************4DIRECTIONS RESOURSE GROUP*****************
                 
             //add a default and break to cover all other possibilities and get out of the switch statement
@@ -291,7 +339,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
             }
             
-      
+            
             //************************************
             
             
